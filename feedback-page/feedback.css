@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;900&display=swap%22");
+
+html {
+  background: url(/images/bg.jpg) no-repeat center fixed;
+  background-size: cover;
+  font-family: "Outfit", sans-serif;
+}
+body {
+  color: white;
+  text-align: center;
+  margin: auto;
+}
+#epicode-logo {
+  max-width: 200px;
+  position: fixed;
+  top: 50px;
+  left: 100px;
+}
+#going-title {
+  margin-top: 200px;
+  font-size: 2em;
+}
+#recommend {
+  font-size: 2em;
+  margin-inline: 525px;
+}
+#experience {
+  font-size: 2em;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+img {
+  margin-left: 20px;
+}
+
+input {
+  width: 800px;
+  height: 20px;
+  background: none;
+  color: grey;
+  border-bottom: solid 2px #c2128d;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+button {
+  margin: 50px;
+  font-family: "Inter", sans-serif;
+  font-size: 22px;
+  padding: 20px 50px;
+  background-color: #00ffff;
+  cursor: pointer;
+  box-shadow: 1px 1px 10px cyan;
+  border-color: transparent;
+}
