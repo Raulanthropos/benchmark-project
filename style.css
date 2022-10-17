@@ -11,7 +11,7 @@ body {
 .container {
   background-image: url(./images/bg.jpg);
   background-repeat: no-repeat;
-  object-fit: fill;
+  object-fit: contain;
   max-width: 89%;
   height: 75vh;
   margin-inline: auto;
@@ -73,7 +73,7 @@ h3 {
   line-height: 1;
   aspect-ratio: 1/1;
   font-size: 12px;
-  border: 30px solid #00ffff;
+  border: 34px solid #00ffff;
   border-radius: 50%;
 }
 
