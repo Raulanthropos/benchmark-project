@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background-color: black;
+  max-width: 1000px;
 }
 
 #epicode-logo {
@@ -12,7 +13,7 @@ body {
   background-repeat: no-repeat;
   object-fit: fill;
   max-width: 89%;
-  height: 70vh;
+  height: 75vh;
   margin-inline: auto;
   margin-top: 5vh;
   padding-top: 5vh;
@@ -64,11 +65,18 @@ h3 {
 
 .circle {
   max-width: 25%;
-  margin-top: 6em;
+  margin-top: 2em;
   text-align: center;
   font-family: Outfit;
   line-height: 1;
+  aspect-ratio: 1/1;
   font-size: 12px;
+  border: 30px solid #00ffff;
+  border-radius: 50%;
+}
+
+.textCenterDiv {
+  margin-top: 3.5em;
 }
 
 .blue-text {
@@ -85,7 +93,7 @@ h3 {
 
 .rate-us {
   text-align: center;
-  margin-top: 6em;
+  margin-top: 2em;
 }
 
 .small-text {
