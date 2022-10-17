@@ -1,20 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Welcome Page!</title>
-</head>
-<body>
-    <div class = "container">
-        <div class = "subcontainer">
-    <img src="./images/epicode_logo.png" alt="Epicode logo" id="epicode-logo">
-    <br>
-    <p>Welcome to <span id="bold-span">your exam</span></p>
-    
-</div>
-</div>
-</body>
+  </head>
+  <body>
+    <div class="container">
+      <div class="subcontainer">
+        <img
+          src="./images/epicode_logo.png"
+          alt="Epicode logo"
+          id="epicode-logo"
+        />
+        <br />
+        <p id="this-is-a-header">
+          Welcome to <span id="bold-span">your exam</span>
+        </p>
+        <div class="text-field">
+          <h4 id="instructions">Instructions</h4>
+          <p id="this-is-a-lesser-header">
+            We don't expect most engineers to know the answers to all of these
+            questions, so don't worry if you're unsure of a few of them.
+          </p>
+          <br />
+          <ul class="unordered-list">
+            <li>
+              Each question is <strong>timed</strong> and can only be answered
+              once.
+            </li>
+            <li>
+              Changing browser tab or opening other windows will invalidate the
+              question.
+            </li>
+            <li>This exam will take approx. <strong>0-5 minutes.</strong></li>
+          </ul>
+        </div>
+        <br />
+      </div>
+      <br>
+      <br>
+      <br>
+      <div id="horizontal-container">
+        <div id="inner-container">
+          <input type="checkbox" id="checkbox-play"/>
+          <p>I promise to answer myself without help from anyone</p>
+        </div>
+        <button id="proceed-button"><strong>PROCEED</strong></button>
+      </div>
+    </div>
+  </body>
 </html>

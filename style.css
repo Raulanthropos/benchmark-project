@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
 body {
     margin: 0;
     background-color: #0e0e0e;
@@ -7,7 +7,7 @@ body {
 }
 
 #epicode-logo {
-    max-width: 150px;
+    max-width: 160px;
 }
 
 .container {
@@ -19,15 +19,14 @@ body {
     max-height: 768px;
     /* margin-inline: auto; */
     position: absolute;
-    top: 10%;
-    left: 25%;
+    top: 9.5%;
+    left: 23.5%;
 }
 
 .subcontainer {
-    margin-left: 100px;
-    margin-top: 50px;
-    max-width: 500px;
-    font-size: 80px;
+    margin-left: 95px;
+    margin-top: 35px;
+    max-width: 600px;
     color: #e7e7eb;
     line-height: 0.8;
     font-weight: 300;
@@ -35,4 +34,60 @@ body {
 
 #bold-span {
     font-weight: 900;
+}
+
+#instructions {
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+    color: #900080;
+    margin-top: 0;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+#this-is-a-header {
+    margin-bottom: 40px;
+    font-size: 74px;
+    max-width: 550px;
+}
+
+#this-is-a-lesser-header {
+    font-size: 16px;
+    line-height: 1.2;
+    max-width: 500px;
+}
+
+.unordered-list {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#horizontal-container {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    max-width: 800px;
+    align-items: center;
+    margin-inline: auto;
+    color: white;
+}
+
+#inner-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#checkbox-play {
+    border: 1px solid white;
+    background-color: inherit;
+}
+
+#proceed-button {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    padding: 20px 50px;
+    background-color: #00FFFF;
+    cursor: pointer;
+    box-shadow: 1px 1px 10px cyan;
+    border-color: transparent;
 }
