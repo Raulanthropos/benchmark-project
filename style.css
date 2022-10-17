@@ -10,22 +10,37 @@ body {
 .container {
   background-image: url(./images/bg.jpg);
   background-repeat: no-repeat;
-  object-fit: contain;
+  object-fit: fill;
   max-width: 89%;
   height: 70vh;
   margin-inline: auto;
-  margin-top: 20vh;
+  margin-top: 5vh;
   padding-top: 5vh;
   color: white;
 }
 
 .logo {
-  margin-left: 11vh;
+  margin-left: 5em;
 }
 
 h2 {
-  font-size: 34pt;
+  font-family: Outfit;
+  font-size: 30pt;
   font-weight: bold;
+  line-height: 5px;
+}
+
+.h2-300 {
+  font-family: Outfit;
+  font-size: 28pt;
+  font-weight: 300;
+  line-height: 5px;
+}
+
+h3 {
+  font-family: Outfit;
+  font-size: 14pt;
+  font-weight: 300;
   line-height: 0;
 }
 
@@ -42,12 +57,18 @@ h2 {
 .correct {
   text-align: left;
   line-height: 0;
+  font-family: Outfit;
+  font-weight: 100;
+  margin-top: 3.5em;
 }
 
 .circle {
   max-width: 25%;
-  margin-top: 5vh;
+  margin-top: 6em;
   text-align: center;
+  font-family: Outfit;
+  line-height: 1;
+  font-size: 12px;
 }
 
 .blue-text {
@@ -57,23 +78,30 @@ h2 {
 .wrong {
   text-align: right;
   line-height: 0;
+  font-family: Outfit;
+  font-weight: 100;
+  margin-top: 3.5em;
 }
 
 .rate-us {
   text-align: center;
-  margin-top: 10vh;
+  margin-top: 6em;
 }
 
 .small-text {
-  font-size: 8pt;
+  font-family: Inter;
+  font-size: 7pt;
+  font-weight: 300;
+  line-height: 0;
 }
 
 button {
-  width: 25vh;
-  height: 6.5vh;
+  width: 10em;
+  height: 2.6em;
   background-color: transparent;
   color: white;
   border-color: white;
-  font-weight: 700;
-  font-size: 14pt;
+  font-family: Outfit;
+  font-weight: 500;
+  font-size: 12pt;
 }
