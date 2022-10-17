@@ -17,6 +17,8 @@ body {
   margin-inline: auto;
   margin-top: 5vh;
   padding-top: 5vh;
+  padding-left: 1em;
+  padding-right: 1em;
   color: white;
 }
 
