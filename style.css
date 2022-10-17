@@ -1,8 +1,79 @@
 body {
-    background-image: url(./images/bg.jpg);
-    background-repeat: no-repeat;
+  margin: 0;
+  background-color: black;
 }
 
 #epicode-logo {
-    max-width: 150px;
+  width: 17%;
+}
+
+.container {
+  background-image: url(./images/bg.jpg);
+  background-repeat: no-repeat;
+  object-fit: contain;
+  max-width: 89%;
+  height: 70vh;
+  margin-inline: auto;
+  margin-top: 20vh;
+  padding-top: 5vh;
+  color: white;
+}
+
+.logo {
+  margin-left: 11vh;
+}
+
+h2 {
+  font-size: 34pt;
+  font-weight: bold;
+  line-height: 0;
+}
+
+.result-box {
+  text-align: center;
+  line-height: 0%;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-around;
+}
+
+.correct {
+  text-align: left;
+  line-height: 0;
+}
+
+.circle {
+  max-width: 25%;
+  margin-top: 5vh;
+  text-align: center;
+}
+
+.blue-text {
+  color: #00ffff;
+}
+
+.wrong {
+  text-align: right;
+  line-height: 0;
+}
+
+.rate-us {
+  text-align: center;
+  margin-top: 10vh;
+}
+
+.small-text {
+  font-size: 8pt;
+}
+
+button {
+  width: 25vh;
+  height: 6.5vh;
+  background-color: transparent;
+  color: white;
+  border-color: white;
+  font-weight: 700;
+  font-size: 14pt;
 }
