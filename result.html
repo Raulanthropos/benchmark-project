@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./resultstyle.css" />
-    <title>Result page</title>
-    <link rel="stylesheet" href="style.css" />
-
+    <title>Result Page</title>
+    <link rel="stylesheet" href="resultstyle.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Outfit:wght@100;300;500;700;900&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Outfit:wght@100;300;500;700;900&display=swap");
@@ -21,39 +19,161 @@
           alt="Epicode logo"
           id="epicode-logo"
         />
-        <div></div>
-        <div></div>
       </div>
       <div class="result-box">
         <h2>Results</h2>
         <h3>The summary of your answers:</h3>
       </div>
-      <div class="summary">
-        <div class="correct">
-          <h2 class="h2-300">Correct</h2>
-          <h2>66.7%</h2>
-          4/6 questions
-        </div>
-        <div class="circle">
-          <div class="textCenterDiv">
-            Congratulations! <br />
-            <span class="blue-text"> You passed the exam.</span>
-            <br /><br />
-            <span class="small-text">
-              We'll send you the certificate in few minutes. <br />
-              Check you email (including promotions / spam folder)
-            </span>
+    </div>
+    <div class="summary">
+      <div id="correctDiv">
+        <h2 class="h2-300">Correct</h2>
+        <h2 id="correctPercentageText"></h2>
+        <div id="correctQuestions"></div>
+      </div>
+      <div class="circle">
+        <div class="outer">
+          <div class="inner">
+            <div>
+              <div id="textCenterDiv">
+                Congratulations! <br />
+                <span id="blue-text"> You passed the exam.</span>
+                <br /><br />
+                <span id="small-text">
+                  We'll send you the certificate in few minutes. <br />
+                  Check you email (including promotions / spam folder)
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="wrong">
-          <h2 class="h2-300">Wrong</h2>
-          <h2>33.3%</h2>
-          2/6 questions
-        </div>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          width="260px"
+          height="260px"
+        >
+          <circle cx="130" cy="130" r="120" stroke-linecap="round" />
+        </svg>
       </div>
-      <div class="rate-us">
-        <button>RATE US</button>
+      <div id="wrongDiv">
+        <h2 class="h2-300">Wrong</h2>
+        <h2 id="wrongPercentageText"></h2>
+        <div id="wrongQuestions"></div>
       </div>
     </div>
+    <div class="rate-us">
+      <button>RATE US</button>
+    </div>
+    <script>
+      let resultInPercentage = 100; // result will be calculated by answered questions
+      let failedInPercentage = 100 - resultInPercentage;
+
+      // defining correct Vars
+      let correctPercentageText = document.getElementById(
+        "correctPercentageText"
+      );
+      let counterCorrect = 0;
+      let numberOfCorrect = resultInPercentage / 10;
+      let correctDiv = document.getElementById("correctQuestions");
+      //   defining wrong Vars
+      let wrongPercentageText = document.getElementById("wrongPercentageText");
+      let wrongDiv = document.getElementById("wrongQuestions");
+      let counterWrong = 0;
+      let wrongInPercentage = 100 - resultInPercentage;
+      let numberOfWrong = failedInPercentage / 10;
+
+      if (resultInPercentage === 0) {
+        correctPercentageText.innerHTML = "0%";
+      } else {
+        setInterval(() => {
+          if (counterCorrect >= resultInPercentage) {
+            clearInterval();
+          } else {
+            counterCorrect += 1;
+            correctPercentageText.innerHTML = counterCorrect + "%";
+          }
+        }, 25);
+        console.log("Hi Tetiana1");
+      }
+
+      correctDiv.innerText = numberOfCorrect + "/10 questions";
+      wrongDiv.innerText = numberOfWrong + "/10 questions";
+
+      if (failedInPercentage === 0) {
+        wrongPercentageText.innerHTML = "0%";
+      } else {
+        setInterval(() => {
+          if (counterWrong >= failedInPercentage) {
+            clearInterval();
+          } else {
+            counterWrong += 1;
+            wrongPercentageText.innerHTML = counterWrong + "%";
+          }
+          console.log("Hi Tetiana2");
+        }, 25);
+      }
+
+      //   calculating stroke-dashoffset
+      let offset = 0;
+      if (resultInPercentage === 100) {
+        offset = 0;
+      } else if (resultInPercentage >= 90) {
+        offset = 350;
+      } else if (resultInPercentage >= 80) {
+        offset = 400;
+      } else if (resultInPercentage >= 70) {
+        offset = 500;
+      } else if (resultInPercentage >= 60) {
+        offset = 580;
+      } else if (resultInPercentage >= 50) {
+        offset = 630;
+      } else if (resultInPercentage >= 40) {
+        offset = 700;
+      } else if (resultInPercentage >= 30) {
+        offset = 790;
+      } else if (resultInPercentage >= 20) {
+        offset = 900;
+      } else if (resultInPercentage >= 10) {
+        offset = 950;
+      } else {
+        offset = 1003;
+      }
+
+      // Inserting stroke-dashoffset into stylesheet
+      let css = window.document.styleSheets[0];
+      css.insertRule(
+        `@keyframes anim {
+          100% {stroke-dashoffset: ` +
+          offset +
+          `;
+        }`,
+        0
+      );
+      // displaying Text in the Center of the circle depending on the result
+      const passedOrFailed = function () {
+        let textCenterDiv = document.getElementById("textCenterDiv");
+        if (resultInPercentage >= 60) {
+          textCenterDiv.innerHTML = `Congratulations <br />
+                <span id="blue-text"> You did pass the exam.</span>
+                <br /><br />
+                <span id="small-text">
+                  We'll send you the certificate in few minutes. <br />
+                  Check you email (including promotions / spam folder)
+                </span>`;
+        } else {
+          textCenterDiv.innerHTML = `Sorry! <br />
+                <span id="red-text"> You did not pass the exam.</span>
+                <br /><br />
+                <span id="small-text">
+                  You will be scheduled on an 1on1 with a Teaching Assistant.
+                  Check you emails for further information
+                </span>`;
+        }
+      };
+
+      passedOrFailed();
+    </script>
   </body>
 </html>
