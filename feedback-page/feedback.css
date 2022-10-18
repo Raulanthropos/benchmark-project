@@ -1,56 +1,54 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;900&display=swap%22");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap");
 
-html {
-  background: url(./images/bg.jpg);
-  background-size: cover;
-  font-family: "Outfit", sans-serif;
-}
 body {
   color: white;
   text-align: center;
-  margin: auto;
+  margin: 0;
+  background-image: url(./images/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Outfit", sans-serif;
 }
 #epicode-logo {
-  max-width: 200px;
-  position: fixed;
-  top: 50px;
-  left: 100px;
+  width: 17%;
+  margin-right: 70%;
+  margin-top: 1%;
 }
 #going-title {
-  margin-top: 200px;
+  margin-top: 5rem;
   font-size: 2em;
 }
 #recommend {
   font-size: 2em;
-  margin-inline: 525px;
 }
 #experience {
   font-size: 2em;
-  margin-top: 100px;
-  margin-bottom: 50px;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
 }
 img {
-  margin-left: 20px;
+  margin-left: 1rem;
 }
 
 input {
-  width: 800px;
-  height: 20px;
+  width: 50rem;
+  height: 1rem;
   background: none;
   color: grey;
-  border-bottom: solid 2px #c2128d;
+  border-bottom: solid 0.2rem #c2128d;
   border-top: none;
   border-left: none;
   border-right: none;
-  padding: 10px;
+  padding: 1rem;
   font-size: 1.2em;
 }
 
 button {
-  margin: 50px;
+  margin: 4rem;
   font-family: "Inter", sans-serif;
-  font-size: 22px;
-  padding: 20px 50px;
+  font-size: 1.2rem;
+  padding: 1.2rem 3rem;
   background-color: #00ffff;
   cursor: pointer;
   box-shadow: 1px 1px 10px cyan;
