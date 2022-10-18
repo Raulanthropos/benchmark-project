@@ -20,8 +20,9 @@ body {
   font-size: 3em;
 }
 #button-container {
-  margin-block: 5%;
+  margin-top: 5%;
   margin-inline: 30%;
+  margin-bottom: 2%;
 }
 .butt {
   width: 25em;
@@ -82,8 +83,9 @@ h3 {
   left: 40rem;
   right: auto;
   font-family: "Inter", sans-serif;
-  font-size: 20px;
-  padding: 20px 50px;
+  font-size: 1.4rem;
+  font-weight: bolder;
+  padding: 1rem 3rem;
   background-color: #00ffff;
   cursor: pointer;
   box-shadow: 1px 1px 10px cyan;
