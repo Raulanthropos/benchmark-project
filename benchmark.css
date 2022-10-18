@@ -16,7 +16,7 @@ body {
 }
 
 #question {
-  font-weight: 900;
+  font-weight: 300;
   font-size: 3em;
 }
 #button-container {
@@ -27,7 +27,10 @@ body {
 .butt {
   width: 30em;
   height: 5em;
-  border: solid white;
+  border-top: solid 0.15rem white;
+  border-left: solid 0.1rem whitesmoke;
+  border-right: solid 0.1rem whitesmoke;
+  border-bottom: solid 0.1rem grey;
   border-radius: 20em;
   background-color: #23294f;
   margin-inline: 1em;
@@ -53,6 +56,7 @@ body {
   height: 10em;
   border-radius: 50%;
   border: solid 1em #00ffff;
+  box-shadow: 1px 1px 10px cyan;
   align-items: center;
   text-align: center;
   margin-block: 1em;
