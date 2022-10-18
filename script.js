@@ -9,5 +9,7 @@ checkbox.addEventListener('change', function() {
         buttonLink.classList.toggle("no-pointer")
     } else {
         proceedButton.disabled = true;
+        proceedButton.classList.toggle("no-click");
+        buttonLink.classList.toggle("no-pointer")
     }
 })
