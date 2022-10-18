@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;900&display=swap%22");
 
 html {
-  background: url(/images/bg.jpg) no-repeat center fixed;
+  background: url(./images/bg.jpg);
   background-size: cover;
   font-family: "Outfit", sans-serif;
 }
@@ -55,4 +55,20 @@ button {
   cursor: pointer;
   box-shadow: 1px 1px 10px cyan;
   border-color: transparent;
+}
+
+.star-image-black {
+  display: inline-block;
+  width: 5vw;
+  height: 5vh;
+  cursor: pointer;
+  background-image: url(./images/star-solid.svg);
+  background-repeat: no-repeat;
+}
+
+.star-image {
+  background-image: url(./images/star.svg);
+  /* background-repeat: no-repeat; */
+  display: inline-block;
+  cursor: pointer;
 }
