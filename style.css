@@ -85,10 +85,7 @@ body {
   border-color: transparent;
 }
 
-.no-click {
+.no-click,
+.no-pointer {
   pointer-events: none;
-}
-
-a {
-  text-decoration: none;
 }
