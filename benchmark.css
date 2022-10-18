@@ -21,11 +21,11 @@ body {
 }
 #button-container {
   margin-top: 5%;
-  margin-inline: 30%;
+  margin-inline: 20%;
   margin-bottom: 2%;
 }
 .butt {
-  width: 25em;
+  width: 30em;
   height: 5em;
   border: solid white;
   border-radius: 20em;
