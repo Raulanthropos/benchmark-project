@@ -6,28 +6,23 @@ html {
 }
 body {
   color: white;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
   text-align: center;
 }
 #epicode-logo {
   max-width: 200px;
-  position: fixed;
-  top: 50px;
-  left: 100px;
+  margin-right: 1800px;
+  margin-left: 100px;
+  margin-top: 50px;
 }
 
 #html-checkbox {
   font-weight: 900;
   font-size: 3em;
-  position: fixed;
-  top: 270px;
-  margin-inline: 650px;
+  margin-top: 200px;
 }
 #button-container {
-  position: relative;
-  top: 450px;
-  margin-inline: 500px;
+  margin-block: 100px;
+  margin-inline: 25em;
 }
 button {
   width: 330px;
@@ -45,19 +40,15 @@ button:hover {
   background-color: #b50189;
 }
 #questions {
-  position: fixed;
-  bottom: 20px;
+  margin-top: 150px;
   font-size: x-large;
-  margin-inline: 820px;
 }
 #in-html {
   font-weight: 900;
 }
 #timer {
-  position: fixed;
-  top: 50px;
-  right: 100px;
-  display: inline;
+  margin-left: 1500px;
+  margin-right: 10px;
   width: 150px;
   height: 150px;
   border-radius: 50%;
