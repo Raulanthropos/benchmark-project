@@ -92,3 +92,11 @@ body {
     box-shadow: 1px 1px 10px cyan;
     border-color: transparent;
 }
+
+.no-click {
+    pointer-events: none;
+}
+
+a {
+    text-decoration: none;
+}
