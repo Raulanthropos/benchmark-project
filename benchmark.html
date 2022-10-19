@@ -12,33 +12,46 @@
     />
   </head>
   <body>
-    <img src="./images/epicode_logo.png" alt="Epicode logo" id="epicode-logo" />
-    <div id="timer">
-      <p id="sec">Seconds</p>
-      <h3 id="display-time">16</h3>
-      <p id="rem">Remaining</p>
+    <div id="headerDiv">
+      <div id="logoDiv">
+        <img
+          src="./images/epicode_logo.png"
+          alt="Epicode logo"
+          id="epicode-logo"
+        />
+      </div>
+      <div id="timer">
+        <div id="sec">Seconds</div>
+        <h3 id="display-time"></h3>
+        <div id="rem">Remaining</div>
+      </div>
     </div>
-    <div>
-      <h1 id="question">How can i create a checkbox in HTML?</h1>
-    </div>
-    <div id="button-container">
-      <button class="butt"></button>
-      <button class="butt"></button>
-      <button class="butt"></button>
-      <button class="butt"></button>
-    </div>
-    <div id="question-container">
+    <div class="container">
+      <div id="question">
+        <h3>How can i create a checkbox in HTML?</h3>
+      </div>
+      <div id="answer-container">
+        <div id="upperButtons">
+          <button class="butt" id="button1"></button>
+          <button class="butt" id="button2"></button>
+        </div>
+        <div id="bottomButtons">
+          <button class="butt" id="button3"></button>
+          <button class="butt" id="button4"></button>
+        </div>
+      </div>
+
       <button id="proceed-button">
         Next <i class="fal fa-arrow-right"></i>
       </button>
-    </div>
-    <div id="questions">
-      <p>QUESTION 1<span id="quest-number"> / 10</span></p>
+      <div id="questionNumber">
+        QUESTION 1<span id="purple-color"> / 10</span>
+      </div>
     </div>
     <script>
       /* timer */
       const timeH = document.querySelector("h3");
-      let timeSecond = 16;
+      let timeSecond = 30;
       timeH.innerHtml = timeSecond;
 
       const countDown = setInterval(() => {
