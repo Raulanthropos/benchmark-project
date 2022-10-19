@@ -67,7 +67,7 @@
       <button>RATE US</button>
     </div>
     <script>
-      let resultInPercentage = 100; // result will be calculated by answered questions
+      let resultInPercentage = 30; // result will be calculated by answered questions
       let failedInPercentage = 100 - resultInPercentage;
 
       // defining correct Vars
@@ -84,36 +84,32 @@
       let wrongInPercentage = 100 - resultInPercentage;
       let numberOfWrong = failedInPercentage / 10;
 
-      if (resultInPercentage === 0) {
-        correctPercentageText.innerHTML = "0%";
-      } else {
-        setInterval(() => {
-          if (counterCorrect >= resultInPercentage) {
-            clearInterval();
-          } else {
-            counterCorrect += 1;
-            correctPercentageText.innerHTML = counterCorrect + "%";
-          }
-        }, 25);
-        console.log("Hi Tetiana1");
-      }
+      // Intervall Function including stopping function
+      const countCorrect = setInterval(function () {
+        if (counterCorrect !== resultInPercentage) {
+          counterCorrect += 1;
+          correctPercentageText.innerHTML = counterCorrect + "%";
+        }
 
+        console.log(wrongInPercentage);
+        if (counterWrong < wrongInPercentage) {
+          counterWrong += 1;
+          console.log(counterWrong);
+          wrongPercentageText.innerHTML = counterWrong + "%";
+        }
+        if (
+          counterCorrect === resultInPercentage &&
+          counterWrong === 100 - resultInPercentage
+        ) {
+          clearInterval(countCorrect);
+        }
+
+        console.log("correct counter in setInterval: " + counterCorrect);
+      }, 25);
+
+      //    displaying how many question correct/wronf out of 10
       correctDiv.innerText = numberOfCorrect + "/10 questions";
       wrongDiv.innerText = numberOfWrong + "/10 questions";
-
-      if (failedInPercentage === 0) {
-        wrongPercentageText.innerHTML = "0%";
-      } else {
-        setInterval(() => {
-          if (counterWrong >= failedInPercentage) {
-            clearInterval();
-          } else {
-            counterWrong += 1;
-            wrongPercentageText.innerHTML = counterWrong + "%";
-          }
-          console.log("Hi Tetiana2");
-        }, 25);
-      }
 
       //   calculating stroke-dashoffset
       let offset = 0;
