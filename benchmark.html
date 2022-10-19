@@ -1,129 +1,45 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./benchmark.css" />
+    <link rel="stylesheet" href="/benchmark.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter&family=Outfit&display=swap");
+    </style>
+    <title>Epicode Benchmark</title>
   </head>
   <body>
-    <div id="headerDiv">
-      <div id="logoDiv">
-        <img
-          src="./images/epicode_logo.png"
-          alt="Epicode logo"
-          id="epicode-logo"
-        />
-      </div>
-      <div id="timer">
-        <div id="sec">Seconds</div>
-        <h3 id="display-time">30</h3>
-        <div id="rem">Remaining</div>
+    <div class="bg">
+      <div class="logo-container">
+        <img src="/images/epicode_logo.png" alt="epicode logo" />
       </div>
     </div>
     <div class="container">
-      <div id="question">
-        <h3 id="quest">Question example</h3>
-      </div>
-      <div id="answer-container">
-        <div id="upperButtons">
-          <button class="butt" data-number="1" id="button1">Example1</button>
-          <button class="butt" data-number="2" id="button2">Example2</button>
+      <h1 id="question">What is the answer to this question?</h1>
+      <div class="flexitems">
+        <div class="answers">
+          <div class="choice-container">
+            <p class="answer-text" data-number="1">Choice 1</p>
+          </div>
+          <div class="choice-container">
+            <p class="answer-text" data-number="2">Choice 2</p>
+          </div>
+          <div class="choice-container">
+            <p class="answer-text" data-number="3">Choice 3</p>
+          </div>
+          <div class="choice-container">
+            <p class="answer-text" data-number="4">Choice 4</p>
+          </div>
         </div>
-        <div id="bottomButtons">
-          <button class="butt" data-number="3" id="button3">Example3</button>
-          <button class="butt" data-number="4" id="button4">Example4</button>
-        </div>
       </div>
-
-      <button id="proceed-button">Next</button>
-      <div id="questionNumber">
-        QUESTION<span id="progressText"> </span>
-        <span id="purple-color"> / 10</span>
+      <div id="nextbtn">Next</div>
+      <div class="questionnum">
+        <p id="progressText" class="hud-prefix">Question</p>
       </div>
     </div>
-    <script>
-      const question = document.querySelector("quest");
-      const choices = Array.from(document.querySelectorAll(".butt"));
-      const progressText = document.querySelector("#progressText");
-      let currentQuestion = {};
-      let acceptingAnswers = true;
-      let questionCounter = 0;
-      let availableQuestions = [];
-
-      let questions = [
-        {
-          question: "HTML is what type of language?",
-          choice1: "Macro Language",
-          choice2: "Scripting Language",
-          choice3: "Markup Language",
-          choice4: "Programming Language",
-          answer: 3,
-        },
-        {
-          question: "What does CPU stand for?",
-          choice1: "Central Process Unit",
-          choice2: "Central Processing Unit",
-          choice3: "Computer Personal Unit",
-          choice4: "Central Processor Unit",
-          answer: 2,
-        },
-        {
-          question: "What is the most preferred image format used for logos?",
-          choice1: ".png",
-          choice2: ".jpeg",
-          choice3: ".svg",
-          choice4: ".gif",
-          answer: 3,
-        },
-        {
-          question: "In web design, what does CSS stand for?",
-          choice1: "Counter Strike: Source",
-          choice2: "Cascading Style Sheet",
-          choice3: "Corrective Style Sheet",
-          choice4: "Computer Style Sheet",
-          answer: 2,
-        },
-      ];
-      const maxQuestions = 4;
-      startGame = () => {
-        questionCounter = 0;
-        score = 0;
-        availableQuestions = [...questions];
-        getNewQuestion();
-      };
-      getNewQuestion = () => {
-        questionCounter++;
-        progressText.innerText = ` ${questionCounter}`;
-
-        const questionsIndex = Math.floor(
-          Math.random() * availableQuestions.length
-        );
-        currentQuestion = availableQuestions[questionsIndex];
-        question.innerText = currentQuestion.question;
-        choices.forEach((choice) => {
-          const number = choice.dataset["number"];
-          choice.innerText = currentQuestion["choice" + number];
-        });
-
-        availableQuestions.splice(questionsIndex, 1);
-        acceptingAnswers = true;
-      };
-
-      /* timer */
-      const timeH = document.querySelector("h3");
-      let timeSecond = 30;
-      timeH.innerHtml = timeSecond;
-
-      const countDown = setInterval(() => {
-        timeSecond--;
-        timeH.innerHTML = timeSecond;
-        if (timeSecond < 0 || timeSecond < 1) {
-          clearInterval(countDown);
-        }
-      }, 1000);
-      startGame();
-    </script>
+    <script src="./benchmark.js"></script>
   </body>
 </html>
