@@ -70,3 +70,14 @@ button {
   display: inline-block;
   cursor: pointer;
 }
+
+.disabled {
+  pointer-events: none;
+}
+
+.star-image-important {
+  background-image: url(./images/star.svg) !important;
+  /* background-repeat: no-repeat; */
+  display: inline-block;
+  cursor: pointer;
+}
