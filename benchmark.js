@@ -4,6 +4,7 @@ const question = document.querySelector("#question");
 const choices = Array.from(document.querySelectorAll(".answer-text"));
 const progressText = document.querySelector("#progressText");
 const newButton = document.querySelector("#nextbtn");
+const choiceBox = document.querySelectorAll(".choice-container");
 
 let currentQuestion = {};
 let acceptingAnswers = true;
@@ -181,3 +182,8 @@ const countDown = setInterval(() => {
     clearInterval(countDown);
   }
 }, 1000);
+
+for (let i=0; i < choiceBox.length; i++) {
+choiceBox[i].addEventListener('click', function() {
+  choiceBox[i].classList.add("choice-container-selected");
+})}

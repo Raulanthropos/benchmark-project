@@ -77,6 +77,10 @@ img {
   cursor: pointer;
 }
 
+.choice-container-selected {
+  background-image: linear-gradient(#d20094, #900080) !important;
+}
+
 .questionnum {
   position: relative;
   width: 120px;
