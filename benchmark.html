@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./benchmark.css" />
-    <link
-      rel="stylesheet"
-      href="path/to/font-awesome/css/font-awesome.min.css"
-    />
   </head>
   <body>
     <div id="headerDiv">
@@ -22,33 +18,99 @@
       </div>
       <div id="timer">
         <div id="sec">Seconds</div>
-        <h3 id="display-time"></h3>
+        <h3 id="display-time">30</h3>
         <div id="rem">Remaining</div>
       </div>
     </div>
     <div class="container">
       <div id="question">
-        <h3>How can i create a checkbox in HTML?</h3>
+        <h3 id="quest">Question example</h3>
       </div>
       <div id="answer-container">
         <div id="upperButtons">
-          <button class="butt" id="button1"></button>
-          <button class="butt" id="button2"></button>
+          <button class="butt" data-number="1" id="button1">Example1</button>
+          <button class="butt" data-number="2" id="button2">Example2</button>
         </div>
         <div id="bottomButtons">
-          <button class="butt" id="button3"></button>
-          <button class="butt" id="button4"></button>
+          <button class="butt" data-number="3" id="button3">Example3</button>
+          <button class="butt" data-number="4" id="button4">Example4</button>
         </div>
       </div>
 
-      <button id="proceed-button">
-        Next <i class="fal fa-arrow-right"></i>
-      </button>
+      <button id="proceed-button">Next</button>
       <div id="questionNumber">
-        QUESTION 1<span id="purple-color"> / 10</span>
+        QUESTION<span id="progressText"> </span>
+        <span id="purple-color"> / 10</span>
       </div>
     </div>
     <script>
+      const question = document.querySelector("quest");
+      const choices = Array.from(document.querySelectorAll(".butt"));
+      const progressText = document.querySelector("#progressText");
+      let currentQuestion = {};
+      let acceptingAnswers = true;
+      let questionCounter = 0;
+      let availableQuestions = [];
+
+      let questions = [
+        {
+          question: "HTML is what type of language?",
+          choice1: "Macro Language",
+          choice2: "Scripting Language",
+          choice3: "Markup Language",
+          choice4: "Programming Language",
+          answer: 3,
+        },
+        {
+          question: "What does CPU stand for?",
+          choice1: "Central Process Unit",
+          choice2: "Central Processing Unit",
+          choice3: "Computer Personal Unit",
+          choice4: "Central Processor Unit",
+          answer: 2,
+        },
+        {
+          question: "What is the most preferred image format used for logos?",
+          choice1: ".png",
+          choice2: ".jpeg",
+          choice3: ".svg",
+          choice4: ".gif",
+          answer: 3,
+        },
+        {
+          question: "In web design, what does CSS stand for?",
+          choice1: "Counter Strike: Source",
+          choice2: "Cascading Style Sheet",
+          choice3: "Corrective Style Sheet",
+          choice4: "Computer Style Sheet",
+          answer: 2,
+        },
+      ];
+      const maxQuestions = 4;
+      startGame = () => {
+        questionCounter = 0;
+        score = 0;
+        availableQuestions = [...questions];
+        getNewQuestion();
+      };
+      getNewQuestion = () => {
+        questionCounter++;
+        progressText.innerText = ` ${questionCounter}`;
+
+        const questionsIndex = Math.floor(
+          Math.random() * availableQuestions.length
+        );
+        currentQuestion = availableQuestions[questionsIndex];
+        question.innerText = currentQuestion.question;
+        choices.forEach((choice) => {
+          const number = choice.dataset["number"];
+          choice.innerText = currentQuestion["choice" + number];
+        });
+
+        availableQuestions.splice(questionsIndex, 1);
+        acceptingAnswers = true;
+      };
+
       /* timer */
       const timeH = document.querySelector("h3");
       let timeSecond = 30;
@@ -61,6 +123,7 @@
           clearInterval(countDown);
         }
       }, 1000);
+      startGame();
     </script>
   </body>
 </html>
