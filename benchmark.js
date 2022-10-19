@@ -10,7 +10,7 @@ let acceptingAnswers = true;
 let questionCounter = 0;
 let availableQuestions = [];
 
-//using last week's array based on group decision, modified to fit the code
+//using last week's array , modified to fit the code
 
 let questions = [
   {
@@ -54,12 +54,57 @@ let questions = [
     choice4: "Marshmallow",
     answer: 1,
   },
+  //6
+  {
+    question:
+      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesnt get modified?",
+    choice1: "Final",
+    choice2: "Static",
+    choice3: "Private",
+    choice4: "Public",
+    answer: 1,
+  },
+  {
+    question: "On Twitter, what is the character limit for a Tweet?",
+    choice1: "140",
+    choice2: "120",
+    choice3: "160",
+    choice4: "100",
+    answer: 1,
+  },
+  {
+    question:
+      "Which programming language shares its name with an island in Indonesia?",
+    choice1: "Java",
+    choice2: "Python",
+    choice3: "C",
+    choice4: "Jakarta",
+    answer: 1,
+  },
+  {
+    question:
+      "Which of the following tag is used for inserting the largest heading in HTML?",
+    choice1: "<h6>",
+    choice2: "<h1>",
+    choice3: "<h3>",
+    choice4: "<h5>",
+    answer: 2,
+  },
+  {
+    question:
+      "Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?",
+    choice1: "src",
+    choice2: "alt",
+    choice3: "longdesc",
+    choice4: "title",
+    answer: 2,
+  },
 ];
 
 //declaring the number of questions for the counter, also the points given for each so it can be easily implemented on the results page
 
-const MAX_QUESTIONS = 5;
-const SCORE_POINTS = 20;
+const MAX_QUESTIONS = 10;
+const SCORE_POINTS = 10;
 
 startGame = () => {
   questionCounter = 0;
@@ -105,7 +150,7 @@ choices.forEach((choice) => {
     let classToApply =
       selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
-    //adds 20 points if the answer is right
+    //adds 10 points if the answer is right
     if (classToApply === "correct") {
       incrementScore(SCORE_POINTS);
     }
