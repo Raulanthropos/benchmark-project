@@ -17,7 +17,7 @@ body {
 #headerDiv {
   display: flex;
   justify-content: space-between;
-  margin-top: 4vh;
+  margin-top: 15vh;
   margin-left: 10%;
   margin-right: 10%;
 }

@@ -99,7 +99,7 @@ let questions = [
 ];
 
 const MAX_QUESTIONS = 10;
-const SCORE_POINTS = 10;
+let SCORE_POINTS = 10;
 
 startGame = () => {
   questionCounter = 0;
@@ -135,15 +135,15 @@ choices.forEach((choice) => {
     if (!acceptingAnswers) return;
 
     acceptingAnswers = false;
-    const selectedChoice = e.target;
-    const selectedAnswer = selectedChoice.dataset["number"];
+    let selectedChoice = e.target;
+    let selectedAnswer = selectedChoice.dataset["number"];
 
     let classToApply =
       selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
     //adds 10 points if the answer is right
     if (classToApply === "correct") {
-      incrementscore(SCORE_POINTS);
+      return (score += SCORE_POINTS);
     }
 
     selectedChoice.parentElement.classList.add(classToApply);
