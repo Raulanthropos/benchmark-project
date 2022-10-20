@@ -100,7 +100,7 @@ let questions = [
 
 const MAX_QUESTIONS = 10;
 let SCORE_POINTS = 10;
-
+let score = 0;
 startGame = () => {
   questionCounter = 0;
   score = 0;
