@@ -192,6 +192,11 @@ p {
   font-weight: 600;
 }
 
+.unclickable {
+  background-color: gray !important;
+  opacity: 0.2;
+}
+
 #nextbtn:hover {
   background-color: #00ffff;
   cursor: pointer;
