@@ -1,5 +1,3 @@
-//declaring the variables later used in the code, targeting html elements
-
 const question = document.querySelector("#question");
 const choices = Array.from(document.querySelectorAll(".answer-text"));
 const progressText = document.querySelector("#progressText");
@@ -10,8 +8,6 @@ let currentQuestion = {};
 let acceptingAnswers = true;
 let questionCounter = 0;
 let availableQuestions = [];
-
-//using last week's array , modified to fit the code
 
 let questions = [
   {
@@ -102,8 +98,6 @@ let questions = [
   },
 ];
 
-//declaring the number of questions for the counter, also the points given for each so it can be easily implemented on the results page
-
 const MAX_QUESTIONS = 10;
 const SCORE_POINTS = 10;
 
@@ -115,21 +109,18 @@ startGame = () => {
 };
 
 getNewQuestion = () => {
-  //the end redirects the page to the next one (results) after it reached the limit of questions, keeps track of points
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
     return window.location.assign("./result.html");
   }
-  //otherwise shows the number of the next question out of the total which is five in this case, also increments it with one every time
+
   questionCounter++;
   progressText.innerText = `Question ${questionCounter} / ${MAX_QUESTIONS}`;
 
-  //makes the questions appear in a random order on each refresh, uses the questions from the array
   const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[questionsIndex];
   question.innerText = currentQuestion.question;
 
-  //uses the array to generate the possible answers, each with an individual number after "choice" to separate them and check if they are correct
   choices.forEach((choice) => {
     const number = choice.dataset["number"];
     choice.innerText = currentQuestion["choice" + number];
@@ -139,7 +130,6 @@ getNewQuestion = () => {
   acceptingAnswers = true;
 };
 
-//if you click on the right answer it applies correct otherwise incorrect, didn't specify in css
 choices.forEach((choice) => {
   choice.addEventListener("click", (e) => {
     if (!acceptingAnswers) return;
@@ -158,7 +148,6 @@ choices.forEach((choice) => {
 
     selectedChoice.parentElement.classList.add(classToApply);
 
-    //gives time to see if the answer is correct (might delete), then jumps to the next question using the function previously written (getNewQuestion())
     setTimeout(() => {
       selectedChoice.parentElement.classList.remove(classToApply);
       getNewQuestion();
@@ -183,7 +172,8 @@ const countDown = setInterval(() => {
   }
 }, 1000);
 
-for (let i=0; i < choiceBox.length; i++) {
-choiceBox[i].addEventListener('click', function() {
-  choiceBox[i].classList.add("choice-container-selected");
-})}
+for (let i = 0; i < choiceBox.length; i++) {
+  choiceBox[i].addEventListener("click", function () {
+    choiceBox[i].classList.add("choice-container-selected");
+  });
+}
