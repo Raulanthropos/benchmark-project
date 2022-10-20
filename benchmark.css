@@ -207,3 +207,6 @@ p {
 .choice-container-selected {
   background-image: linear-gradient(#d20093, #900080) !important;
 }
+.no-click {
+  pointer-events: none;
+}
