@@ -159,6 +159,10 @@ svg {
   margin-top: 5vh;
 }
 
+#rateus {
+  cursor: pointer;
+}
+
 button {
   width: 10em;
   height: 2.6em;

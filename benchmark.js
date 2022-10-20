@@ -109,6 +109,9 @@ startGame = () => {
 };
 
 getNewQuestion = () => {
+  for (let i = 0; i < choiceBox.length; i++) {
+    choiceBox[i].classList.remove("choice-container-selected");
+  }
   //the end redirects the page to the next one (results) after it reached the limit of questions, keeps track of points
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
@@ -174,6 +177,18 @@ const countDown = setInterval(() => {
 }, 1000);
 
 for (let i=0; i < choiceBox.length; i++) {
-choiceBox[i].addEventListener('click', function() {
-  choiceBox[i].classList.add("choice-container-selected");
-})}
+  choiceBox[i].addEventListener('click', function() {
+    choiceBox[i].classList.add("choice-container-selected");
+    console.log(choiceBox[i])
+  })
+  }
+  
+  choiceBox.forEach((box, index) => {
+    box.addEventListener('click', function() {
+      choiceBox.forEach((otherBoxes, prevIndex) => {
+        if (prevIndex !== index) {
+          otherBoxes.classList.remove("choice-container-selected");
+        }
+      })
+    })
+  })
