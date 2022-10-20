@@ -105,7 +105,8 @@ let questions = [
 //declaring the number of questions for the counter, also the points given for each so it can be easily implemented on the results page
 
 const MAX_QUESTIONS = 10;
-const SCORE_POINTS = 10;
+let SCORE_POINTS = 10;
+let score;
 
 startGame = () => {
   questionCounter = 0;
@@ -121,7 +122,7 @@ getNewQuestion = () => {
   //the end redirects the page to the next one (results) after it reached the limit of questions, keeps track of points
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
-    return window.location.assign("./result.html");
+    return window.location.href = "./result.html";
   }
   //otherwise shows the number of the next question out of the total which is five in this case, also increments it with one every time
   questionCounter++;
@@ -152,11 +153,11 @@ choices.forEach((choice) => {
     const selectedAnswer = selectedChoice.dataset["number"];
 
     let classToApply =
-      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+      selectedAnswer === currentQuestion.answer ? "correct" : "incorrect";
 
     //adds 10 points if the answer is right
     if (classToApply === "correct") {
-      incrementScore(SCORE_POINTS);
+      score += 10;
     }
 
     selectedChoice.parentElement.classList.add(classToApply);
@@ -194,7 +195,6 @@ choiceBox[i].addEventListener('click', function() {
 for (let i=0; i < choiceBox.length; i++) {
   choiceBox[i].addEventListener('click', function() {
     choiceBox[i].classList.add("choice-container-selected");
-    console.log(choiceBox[i])
   })
   }
   
@@ -207,3 +207,4 @@ for (let i=0; i < choiceBox.length; i++) {
       })
     })
   })
+
