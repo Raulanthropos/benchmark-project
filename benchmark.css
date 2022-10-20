@@ -198,3 +198,7 @@ p {
   font-size: 30px;
   color: #ffffff;
 }
+
+.choice-container-selected {
+  background-image: linear-gradient(#d20093, #900080) !important;
+}
