@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./feedback.css">
+    <title>Feedback</title>
+  </head>
+  <body>
+    <img src="./images/epicode_logo.png" alt="Epicode logo" id="epicode-logo" />
+    <div id="going-title">
+      <h1>Tell us how it's going</h1>
+    </div>
+    <div>
+      <p id="recommend">
+        From 0 to 10, how likely are you to recommend EPICODE to a friend or a
+        collague?
+      </p>
+    </div>
+    <div>
+      <!-- <img src="./images/star-solid.svg" alt="star-solid" class="star-image-black"/> -->
+      <div class="star-image-black"></div>
+      <div class="star-image-black"></div>
+      <div class="star-image-black"></div>
+      <div class="star-image-black"></div>
+      <div class="star-image-black"></div>
+      <div class="star-image-black"></div>
+      <div class="star-image-black"></div>
+      <div class="star-image-black"></div>
+      <div class="star-image-black"></div>
+      <div class="star-image-black"></div>
+      <!-- <img src="./images/star.svg" alt="star" class="star-image"/> -->
+      <!-- <img src="./images/star.svg" alt="star" class="star-image"/>
+      <img src="./images/star.svg" alt="star" class="star-image"/>
+      <img src="./images/star.svg" alt="star" class="star-image"/>
+      <img src="./images/star.svg" alt="star" class="star-image"/>
+      <img src="./images/star.svg" alt="star" class="star-image"/>
+      <img src="./images/star.svg" alt="star" class="star-image"/>
+      <img src="./images/star.svg" alt="star" class="star-image"/>
+      <img src="./images/star.svg" alt="star" class="star-image"/>
+      <img src="./images/star.svg" alt="star" class="star-image"/> -->
+    </div>
+    <div>
+      <p id="experience">
+        Leave us an open feedback about your experience so far
+      </p>
+    </div>
+    <div>
+      <input type="text" placeholder="Write your comment here" />
+    </div>
+
+</div>
+<button id="proceed-button"><strong>MORE INFO</strong></button>
+</div>
+<script>
+  const blackStar = document.querySelectorAll(".star-image-black");
+
+blackStar.forEach((star, index) => {
+    star.addEventListener('mouseover', function() {
+        blackStar.forEach((otherStars, prevIndex) => {
+            if (prevIndex <= index) {
+                otherStars.classList.add("star-image");
+            }
+        })
+    })
+    star.addEventListener('mouseleave', function() {
+        blackStar.forEach((otherStars, prevIndex) => {
+            if (prevIndex <= index) {
+                otherStars.classList.remove("star-image");
+            }
+        })
+    })
+
+star.addEventListener('click', function() {
+        blackStar.forEach((otherStars, prevIndex) => {
+            if (prevIndex <= index) {
+                otherStars.classList.add("star-image-important");
+            } else {
+                otherStars.classList.remove("star-image-important");
+            }
+        })
+    })
+})
+</script>
+  </body>
+</html>
