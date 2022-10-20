@@ -67,7 +67,7 @@
       <a href="./feedback.html"><button>RATE US</button></a>
     </div>
     <script>
-      let resultInPercentage = 30; // result will be calculated by answered questions
+      let resultInPercentage = 10; // result will be calculated by answered questions
       let failedInPercentage = 100 - resultInPercentage;
 
       // defining correct Vars
@@ -89,6 +89,8 @@
         if (counterCorrect !== resultInPercentage) {
           counterCorrect += 1;
           correctPercentageText.innerHTML = counterCorrect + "%";
+        } else {
+          correctPercentageText.innerHTML = counterCorrect + "%";
         }
 
         console.log(wrongInPercentage);
@@ -96,7 +98,10 @@
           counterWrong += 1;
           console.log(counterWrong);
           wrongPercentageText.innerHTML = counterWrong + "%";
+        } else {
+          wrongPercentageText.innerHTML = counterWrong + "%";
         }
+
         if (
           counterCorrect === resultInPercentage &&
           counterWrong === 100 - resultInPercentage

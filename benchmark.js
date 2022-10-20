@@ -11,6 +11,17 @@ let acceptingAnswers = true;
 let questionCounter = 0;
 let availableQuestions = [];
 
+// restarting Animation Timer
+const restartTimer = function () {
+  console.log("starting timer");
+  let circle = document.querySelector("circle");
+  circle.style.animationName = "none";
+
+  requestAnimationFrame(() => {
+    circle.style.animationName = "";
+  });
+};
+
 //using last week's array , modified to fit the code
 
 let questions = [
@@ -115,6 +126,7 @@ startGame = () => {
 };
 
 getNewQuestion = () => {
+  restartTimer();
   //the end redirects the page to the next one (results) after it reached the limit of questions, keeps track of points
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
@@ -168,22 +180,27 @@ choices.forEach((choice) => {
 
 newButton.addEventListener("click", () => {
   getNewQuestion();
+  timeSecond = 7;
 });
+
 startGame();
 
 const timeH = document.querySelector("h3");
-let timeSecond = 30;
+let timeSecond = 7;
 timeH.innerHtml = timeSecond;
 
 const countDown = setInterval(() => {
   timeSecond--;
   timeH.innerHTML = timeSecond;
-  if (timeSecond < 0 || timeSecond < 1) {
-    clearInterval(countDown);
+  if (timeSecond < 0) {
+    timeSecond = 7;
+    timeH.innerHTML = timeSecond;
+    getNewQuestion();
   }
 }, 1000);
 
-for (let i=0; i < choiceBox.length; i++) {
-choiceBox[i].addEventListener('click', function() {
-  choiceBox[i].classList.add("choice-container-selected");
-})}
+for (let i = 0; i < choiceBox.length; i++) {
+  choiceBox[i].addEventListener("click", function () {
+    choiceBox[i].classList.add("choice-container-selected");
+  });
+}
