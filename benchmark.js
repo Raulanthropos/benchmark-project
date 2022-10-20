@@ -143,7 +143,7 @@ choices.forEach((choice) => {
 
     //adds 10 points if the answer is right
     if (classToApply === "correct") {
-      incrementScore(SCORE_POINTS);
+      incrementscore(SCORE_POINTS);
     }
 
     selectedChoice.parentElement.classList.add(classToApply);
@@ -177,3 +177,4 @@ for (let i = 0; i < choiceBox.length; i++) {
     choiceBox[i].classList.add("choice-container-selected");
   });
 }
+console.log(score);
