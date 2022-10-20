@@ -99,8 +99,8 @@ let questions = [
 ];
 
 const MAX_QUESTIONS = 10;
-let SCORE_POINTS = 10;
-let score = 0;
+const SCORE_POINTS = 10;
+
 startGame = () => {
   questionCounter = 0;
   score = 0;
@@ -109,9 +109,10 @@ startGame = () => {
 };
 
 getNewQuestion = () => {
+  //the end redirects the page to the next one (results) after it reached the limit of questions, keeps track of points
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
-    return window.location.assign("./result.html");
+    return window.location.href = "./result.html";
   }
 
   questionCounter++;
@@ -139,11 +140,11 @@ choices.forEach((choice) => {
     let selectedAnswer = selectedChoice.dataset["number"];
 
     let classToApply =
-      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+      selectedAnswer === currentQuestion.answer ? "correct" : "incorrect";
 
     //adds 10 points if the answer is right
     if (classToApply === "correct") {
-      return (score += SCORE_POINTS);
+      incrementScore(SCORE_POINTS);
     }
 
     selectedChoice.parentElement.classList.add(classToApply);
@@ -172,9 +173,7 @@ const countDown = setInterval(() => {
   }
 }, 1000);
 
-for (let i = 0; i < choiceBox.length; i++) {
-  choiceBox[i].addEventListener("click", function () {
-    choiceBox[i].classList.add("choice-container-selected");
-  });
-}
-console.log(score);
+for (let i=0; i < choiceBox.length; i++) {
+choiceBox[i].addEventListener('click', function() {
+  choiceBox[i].classList.add("choice-container-selected");
+})}
