@@ -18,7 +18,7 @@ const restartAnimation = function () {
   circle.style.animationName = "none";
 
   requestAnimationFrame(() => {
-    circle.style.animationName = "";
+    circle.style.animationName = "anim";
   });
 };
 
@@ -125,7 +125,7 @@ startGame = () => {
   getNewQuestion();
 };
 
-getNewQuestion = () => {
+const getNewQuestion = function () {
   restartAnimation();
   //the end redirects the page to the next one (results) after it reached the limit of questions, keeps track of points
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
