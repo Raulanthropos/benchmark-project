@@ -9,6 +9,20 @@ let acceptingAnswers = true;
 let questionCounter = 0;
 let availableQuestions = [];
 
+// restarting Animation Timer
+const restartAnimation = function () {
+  console.log("starting timer");
+  let circle = document.querySelector("circle");
+  circle.style.animationName = "none";
+
+  requestAnimationFrame(() => {
+    circle.style.animationName = "anim";
+  });
+};
+
+//using last week's array , modified to fit the code
+
+
 let questions = [
   {
     question: "HTML is what type of language?",
@@ -109,9 +123,11 @@ startGame = () => {
 };
 
 getNewQuestion = () => {
+restartAnimation();
   for (let i = 0; i < choiceBox.length; i++) {
     choiceBox[i].classList.remove("choice-container-selected");
   }
+  
   //the end redirects the page to the next one (results) after it reached the limit of questions, keeps track of points
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
@@ -195,8 +211,10 @@ const redirect = (i, j) => {
 
 newButton.addEventListener("click", () => {
   getNewQuestion();
+  timeSecond = 30;
   newButton.classList.add("unclickable");
 });
+
 startGame();
 
 const timeH = document.querySelector("h3");
@@ -206,14 +224,17 @@ timeH.innerHtml = timeSecond;
 const countDown = setInterval(() => {
   timeSecond--;
   timeH.innerHTML = timeSecond;
-  if (timeSecond < 0 || timeSecond < 1) {
-    clearInterval(countDown);
+  if (timeSecond < 0) {
+    timeSecond = 30;
+    timeH.innerHTML = timeSecond;
+    getNewQuestion();
   }
 }, 1000);
 
 for (let i = 0; i < choiceBox.length; i++) {
   choiceBox[i].addEventListener("click", function () {
     choiceBox[i].classList.add("choice-container-selected");
+
     console.log(choiceBox[i]);
   });
 }
@@ -240,5 +261,6 @@ choiceBox.forEach((box, index) => {
 for (let i = 0; i < choiceBox.length; i++) {
   choiceBox[i].addEventListener("click", function () {
     newButton.classList.remove("unclickable");
+
   });
 }

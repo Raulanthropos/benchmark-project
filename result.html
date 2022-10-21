@@ -67,6 +67,7 @@
       <a href="./feedback.html"><button id="rateus">RATE US</button></a>
     </div>
     <script>
+
       console.log(localStorage.getItem("mostRecentScore"));
       let ls = localStorage.getItem("mostRecentScore");
       let resultInPercentage = 30; // result will be calculated by answered questions
@@ -90,12 +91,17 @@
         if (counterCorrect !== resultInPercentage) {
           counterCorrect += 1;
           correctPercentageText.innerHTML = counterCorrect + "%";
+        } else {
+          correctPercentageText.innerHTML = counterCorrect + "%";
         }
 
         if (counterWrong < wrongInPercentage) {
           counterWrong += 1;
           wrongPercentageText.innerHTML = counterWrong + "%";
+        } else {
+          wrongPercentageText.innerHTML = counterWrong + "%";
         }
+
         if (
           counterCorrect === resultInPercentage &&
           counterWrong === 100 - resultInPercentage
