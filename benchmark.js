@@ -161,6 +161,7 @@ choices.forEach((choice) => {
 
 newButton.addEventListener("click", () => {
   getNewQuestion();
+  newButton.classList.add("unclickable");
 });
 startGame();
 
@@ -192,3 +193,17 @@ for (let i=0; i < choiceBox.length; i++) {
       })
     })
   })
+
+  // choiceBox.addEventListener("click", function () {
+//   if (choiceBox.click) {
+//     newButton.disabled = false;
+//     newButton.classList.remove("no-click");
+//   } else {
+//     newButton.disabled = true;
+//     newButton.classList.add("no-click");
+//   }
+// });
+for (let i=0; i < choiceBox.length; i++) {
+  choiceBox[i].addEventListener('click', function() {
+  newButton.classList.remove("unclickable");
+  })}
