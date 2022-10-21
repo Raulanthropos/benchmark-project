@@ -169,7 +169,7 @@ p {
   color: rgb(232, 228, 233);
   background-color: transparent;
   font-family: Outfit;
-  margin-top: 5%;
+  margin-top: 10%;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -192,11 +192,6 @@ p {
   font-weight: 600;
 }
 
-.unclickable {
-  background-color: gray !important;
-  opacity: 0.2;
-}
-
 #nextbtn:hover {
   background-color: #00ffff;
   cursor: pointer;
@@ -212,6 +207,9 @@ p {
 .choice-container-selected {
   background-image: linear-gradient(#d20093, #900080) !important;
 }
-.no-click {
+
+.unclickable {
+  background-color: gray !important;
+  opacity: 0.2;
   pointer-events: none;
 }

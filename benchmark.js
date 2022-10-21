@@ -195,7 +195,6 @@ const redirect = (i, j) => {
 
 newButton.addEventListener("click", () => {
   getNewQuestion();
-  newButton.classList.add("no-click");
   newButton.classList.add("unclickable");
 });
 startGame();
@@ -240,7 +239,6 @@ choiceBox.forEach((box, index) => {
 // });
 for (let i = 0; i < choiceBox.length; i++) {
   choiceBox[i].addEventListener("click", function () {
-    newButton.classList.remove("no-click");
     newButton.classList.remove("unclickable");
   });
 }
