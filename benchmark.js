@@ -9,6 +9,20 @@ let acceptingAnswers = true;
 let questionCounter = 0;
 let availableQuestions = [];
 
+// restarting Animation Timer
+const restartAnimation = function () {
+  console.log("starting timer");
+  let circle = document.querySelector("circle");
+  circle.style.animationName = "none";
+
+  requestAnimationFrame(() => {
+    circle.style.animationName = "anim";
+  });
+};
+
+//using last week's array , modified to fit the code
+
+
 let questions = [
   {
     question: "HTML is what type of language?",
@@ -109,13 +123,15 @@ startGame = () => {
 };
 
 getNewQuestion = () => {
+restartAnimation();
   for (let i = 0; i < choiceBox.length; i++) {
     choiceBox[i].classList.remove("choice-container-selected");
   }
+  
   //the end redirects the page to the next one (results) after it reached the limit of questions, keeps track of points
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
-    return window.location.href = "./result.html";
+    return (window.location.href = "./result.html");
   }
 
   questionCounter++;
@@ -149,7 +165,41 @@ choices.forEach((choice) => {
     if (classToApply === "correct") {
       incrementScore(SCORE_POINTS);
     }
+    /* choices.forEach((choice, clickedAnswer) => {
+  //starting the loop to inspect the answer buttons (choices is an array)
+  choice.addEventListener("click", () => {
+    //adding event listeners to each answer button
+    console.log(`You clicked on ${clickedAnswer + 1}`); //checking if the clicked register
+    let finalAnswer = clickedAnswer + 1; //declaring variable for storing the index of the clicked answer button
+    console.log("You have stored this answer: ", finalAnswer); //checking to see what index was stored
+    if (finalAnswer === currentQuestion.answer) {
+      //comparing our stored value from above, against the correct answer value
+      totalCorrect += 1; //if true, increments totalCorrect by 1
 
+      getNewQuestion(); //then calls the getNewQuestion function in order to move to the next one
+    } else {
+      //if false, increment wrong answers by 1
+      totalWrong += 1;
+      getNewQuestion(); //load new question
+    }
+    console.log("You have answered correct ", totalCorrect, " times");
+  });
+  // redirect(totalCorrect);
+});
+
+const redirect = (i, j) => {
+  //declaring the function to pass the dynamic parameters i and j, as long as static ones
+  const numberToPass = i; //dynamic
+  const totalWrong = j; //dynamic
+  const numberOfQuestions = MAX_QUESTIONS; //static
+  window.location.href =
+    "results.html?numberToPass=" +
+    numberToPass +
+    "&numberOfQuestions=" + //syntax for passing multiple parameters to results page
+    numberOfQuestions +
+    "&totalWrong=" +
+    totalWrong; 
+    */
     selectedChoice.parentElement.classList.add(classToApply);
 
     setTimeout(() => {
@@ -161,8 +211,10 @@ choices.forEach((choice) => {
 
 newButton.addEventListener("click", () => {
   getNewQuestion();
+  timeSecond = 30;
   newButton.classList.add("unclickable");
 });
+
 startGame();
 
 const timeH = document.querySelector("h3");
@@ -172,29 +224,32 @@ timeH.innerHtml = timeSecond;
 const countDown = setInterval(() => {
   timeSecond--;
   timeH.innerHTML = timeSecond;
-  if (timeSecond < 0 || timeSecond < 1) {
-    clearInterval(countDown);
+  if (timeSecond < 0) {
+    timeSecond = 30;
+    timeH.innerHTML = timeSecond;
+    getNewQuestion();
   }
 }, 1000);
 
-for (let i=0; i < choiceBox.length; i++) {
-  choiceBox[i].addEventListener('click', function() {
+for (let i = 0; i < choiceBox.length; i++) {
+  choiceBox[i].addEventListener("click", function () {
     choiceBox[i].classList.add("choice-container-selected");
-    console.log(choiceBox[i])
-  })
-  }
-  
-  choiceBox.forEach((box, index) => {
-    box.addEventListener('click', function() {
-      choiceBox.forEach((otherBoxes, prevIndex) => {
-        if (prevIndex !== index) {
-          otherBoxes.classList.remove("choice-container-selected");
-        }
-      })
-    })
-  })
 
-  // choiceBox.addEventListener("click", function () {
+    console.log(choiceBox[i]);
+  });
+}
+
+choiceBox.forEach((box, index) => {
+  box.addEventListener("click", function () {
+    choiceBox.forEach((otherBoxes, prevIndex) => {
+      if (prevIndex !== index) {
+        otherBoxes.classList.remove("choice-container-selected");
+      }
+    });
+  });
+});
+
+// choiceBox.addEventListener("click", function () {
 //   if (choiceBox.click) {
 //     newButton.disabled = false;
 //     newButton.classList.remove("no-click");
@@ -203,7 +258,9 @@ for (let i=0; i < choiceBox.length; i++) {
 //     newButton.classList.add("no-click");
 //   }
 // });
-for (let i=0; i < choiceBox.length; i++) {
-  choiceBox[i].addEventListener('click', function() {
-  newButton.classList.remove("unclickable");
-  })}
+for (let i = 0; i < choiceBox.length; i++) {
+  choiceBox[i].addEventListener("click", function () {
+    newButton.classList.remove("unclickable");
+
+  });
+}
