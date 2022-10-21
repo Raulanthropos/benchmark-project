@@ -69,10 +69,7 @@
     <script>
       const query = new URLSearchParams(window.location.search);
       let total = 0;
-      console.log(total, typeof total);
       total = query.get("total");
-      console.log(total, typeof total);
-
       let resultInPercentage = 0 + parseInt(total); // result will be calculated by answered questions
       let failedInPercentage = 100 - resultInPercentage;
       // defining correct Vars

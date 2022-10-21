@@ -11,7 +11,6 @@ let availableQuestions = [];
 
 // restarting Animation Timer
 const restartAnimation = function () {
-  console.log("starting timer");
   let circle = document.querySelector("circle");
   circle.style.animationName = "none";
 
@@ -64,7 +63,6 @@ let questions = [
     choice4: "Marshmallow",
     answer: 1,
   },
-  //6
   {
     question:
       "In the programming language Java, which of these keywords would you put on a variable to make sure it doesnt get modified?",
@@ -198,8 +196,6 @@ const countDown = setInterval(() => {
 for (let i = 0; i < choiceBox.length; i++) {
   choiceBox[i].addEventListener("click", function () {
     choiceBox[i].classList.add("choice-container-selected");
-
-    console.log(choiceBox[i]);
   });
 }
 
@@ -222,27 +218,19 @@ for (let i = 0; i < choiceBox.length; i++) {
 let totalCorrect = 0; //making this a global variable, so as not to have log issues later
 let totalWrong = 0; //making this a global variable, so as not to have log issues later
 choiceBox.forEach((choice, clickedAnswer) => {
-  //starting the loop to inspect the answer buttons (choices is an array)
   choice.addEventListener("click", () => {
-    //adding event listeners to each answer button
-    let finalAnswer = clickedAnswer + 1; //declaring variable for storing the index of the clicked answer button
+    let finalAnswer = clickedAnswer + 1; 
     if (finalAnswer === currentQuestion.answer) {
-      //comparing our stored value from above, against the correct answer value
-      totalCorrect += 1; //if true, increments totalCorrect by 1
-      // getNewQuestion(); //then calls the getNewQuestion function in order to move to the next one
+      totalCorrect += 1; 
+
     } else {
-      //if false, increment wrong answers by 1
       totalWrong += 1;
 
-      // getNewQuestion(); //load new question
     }
-    console.log("You have answered correct ", totalCorrect, " times");
   });
 });
 
 const redirect = () => {
-  console.log("this is the one we need:" + totalCorrect);
   const totalScore = totalCorrect * 10;
-  console.log(totalScore);
   window.location.href = "./result.html?total=" + totalScore;
 };
