@@ -149,7 +149,41 @@ choices.forEach((choice) => {
     if (classToApply === "correct") {
       incrementScore(SCORE_POINTS);
     }
+    /* choices.forEach((choice, clickedAnswer) => {
+  //starting the loop to inspect the answer buttons (choices is an array)
+  choice.addEventListener("click", () => {
+    //adding event listeners to each answer button
+    console.log(`You clicked on ${clickedAnswer + 1}`); //checking if the clicked register
+    let finalAnswer = clickedAnswer + 1; //declaring variable for storing the index of the clicked answer button
+    console.log("You have stored this answer: ", finalAnswer); //checking to see what index was stored
+    if (finalAnswer === currentQuestion.answer) {
+      //comparing our stored value from above, against the correct answer value
+      totalCorrect += 1; //if true, increments totalCorrect by 1
 
+      getNewQuestion(); //then calls the getNewQuestion function in order to move to the next one
+    } else {
+      //if false, increment wrong answers by 1
+      totalWrong += 1;
+      getNewQuestion(); //load new question
+    }
+    console.log("You have answered correct ", totalCorrect, " times");
+  });
+  // redirect(totalCorrect);
+});
+
+const redirect = (i, j) => {
+  //declaring the function to pass the dynamic parameters i and j, as long as static ones
+  const numberToPass = i; //dynamic
+  const totalWrong = j; //dynamic
+  const numberOfQuestions = MAX_QUESTIONS; //static
+  window.location.href =
+    "results.html?numberToPass=" +
+    numberToPass +
+    "&numberOfQuestions=" + //syntax for passing multiple parameters to results page
+    numberOfQuestions +
+    "&totalWrong=" +
+    totalWrong; 
+    */
     selectedChoice.parentElement.classList.add(classToApply);
 
     setTimeout(() => {
@@ -204,8 +238,9 @@ choiceBox.forEach((box, index) => {
 //     newButton.classList.add("no-click");
 //   }
 // });
-for (let i=0; i < choiceBox.length; i++) {
-choiceBox[i].addEventListener('click', function() {
-  newButton.classList.remove("no-click");
-  newButton.classList.remove("unclickable");
-})}
+for (let i = 0; i < choiceBox.length; i++) {
+  choiceBox[i].addEventListener("click", function () {
+    newButton.classList.remove("no-click");
+    newButton.classList.remove("unclickable");
+  });
+}
