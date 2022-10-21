@@ -1,5 +1,3 @@
-const { reduce } = require("benchmark");
-
 const question = document.querySelector("#question");
 const choices = Array.from(document.querySelectorAll(".answer-text"));
 const progressText = document.querySelector("#progressText");
@@ -260,14 +258,14 @@ choiceBox.forEach((box, index) => {
 //     newButton.classList.add("no-click");
 //   }
 // });
-
+<<<<<<< Updated upstream
 for (let i = 0; i < choiceBox.length; i++) {
   choiceBox[i].addEventListener("click", function () {
     newButton.classList.remove("unclickable");
 
   });
 }
-
+=======
 for (let i=0; i < choiceBox.length; i++) {
   choiceBox[i].addEventListener('click', function() {
   newButton.classList.remove("unclickable");
@@ -298,15 +296,10 @@ for (let i=0; i < choiceBox.length; i++) {
 let percentageOfCorrectAnswersToBePassedToResultPage = totalCorrect * 10;
 console.log(percentageOfCorrectAnswersToBePassedToResultPage);
 // window.location.href = "./results.html?numberToPass=" + numberToPass + "&numberOfQuestions=" + numberOfQuestions + "&total=" + percentageOfCorrectAnswersToBePassedToResultPage + "&totalWrong=" + totalWrong;
-
-// redirect = function() {
-//   const totalScore = totalCorrect;
-//   console.log(totalScore);
-//   window.location.href = "./result.html?total=" + totalScore;
-// }
-
-// redirect();
-
+const redirect = ()=> {
+  const totalScore = totalCorrect;
+  window.location.href = "./result.html?total=" + totalScore;
+}
 // const redirect = (i, j) => {
 //   //declaring the function to pass the dynamic parameters i and j, as long as static ones
 //   const numberToPass = i; //dynamic
@@ -320,3 +313,4 @@ console.log(percentageOfCorrectAnswersToBePassedToResultPage);
 //     "&totalWrong=" +
 //     totalWrong;
 // }
+>>>>>>> Stashed changes
