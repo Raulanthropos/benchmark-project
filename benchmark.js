@@ -258,9 +258,59 @@ choiceBox.forEach((box, index) => {
 //     newButton.classList.add("no-click");
 //   }
 // });
+<<<<<<< Updated upstream
 for (let i = 0; i < choiceBox.length; i++) {
   choiceBox[i].addEventListener("click", function () {
     newButton.classList.remove("unclickable");
 
   });
 }
+=======
+for (let i=0; i < choiceBox.length; i++) {
+  choiceBox[i].addEventListener('click', function() {
+  newButton.classList.remove("unclickable");
+  })}
+
+  let totalCorrect = 0; //making this a global variable, so as not to have log issues later
+  let totalWrong = 0; //making this a global variable, so as not to have log issues later
+  choiceBox.forEach((choice, clickedAnswer) => {
+  //starting the loop to inspect the answer buttons (choices is an array)
+  choice.addEventListener("click", () => {
+    //adding event listeners to each answer button
+    let finalAnswer = clickedAnswer + 1; //declaring variable for storing the index of the clicked answer button
+    if (finalAnswer === currentQuestion.answer) {
+      //comparing our stored value from above, against the correct answer value
+      totalCorrect += 1; //if true, increments totalCorrect by 1
+
+      // getNewQuestion(); //then calls the getNewQuestion function in order to move to the next one
+    } else {
+      //if false, increment wrong answers by 1
+      totalWrong += 1;
+      // getNewQuestion(); //load new question
+    }
+    console.log("You have answered correct ", totalCorrect, " times");
+  });
+  // redirect(totalCorrect);
+});
+
+let percentageOfCorrectAnswersToBePassedToResultPage = totalCorrect * 10;
+console.log(percentageOfCorrectAnswersToBePassedToResultPage);
+// window.location.href = "./results.html?numberToPass=" + numberToPass + "&numberOfQuestions=" + numberOfQuestions + "&total=" + percentageOfCorrectAnswersToBePassedToResultPage + "&totalWrong=" + totalWrong;
+const redirect = ()=> {
+  const totalScore = totalCorrect;
+  window.location.href = "./result.html?total=" + totalScore;
+}
+// const redirect = (i, j) => {
+//   //declaring the function to pass the dynamic parameters i and j, as long as static ones
+//   const numberToPass = i; //dynamic
+//   const totalWrong = j; //dynamic
+//   const numberOfQuestions = MAX_QUESTIONS; //static
+//   window.location.href =
+//     "./results.html?numberToPass=" +
+//     numberToPass +
+//     "&numberOfQuestions=" + //syntax for passing multiple parameters to results page
+//     numberOfQuestions +
+//     "&totalWrong=" +
+//     totalWrong;
+// }
+>>>>>>> Stashed changes
