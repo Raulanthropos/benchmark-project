@@ -258,14 +258,6 @@ choiceBox.forEach((box, index) => {
 //     newButton.classList.add("no-click");
 //   }
 // });
-<<<<<<< Updated upstream
-for (let i = 0; i < choiceBox.length; i++) {
-  choiceBox[i].addEventListener("click", function () {
-    newButton.classList.remove("unclickable");
-
-  });
-}
-=======
 for (let i=0; i < choiceBox.length; i++) {
   choiceBox[i].addEventListener('click', function() {
   newButton.classList.remove("unclickable");
@@ -313,4 +305,3 @@ const redirect = ()=> {
 //     "&totalWrong=" +
 //     totalWrong;
 // }
->>>>>>> Stashed changes
