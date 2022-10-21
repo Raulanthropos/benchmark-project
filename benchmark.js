@@ -1,5 +1,3 @@
-//declaring the variables later used in the code, targeting html elements
-
 const question = document.querySelector("#question");
 const choices = Array.from(document.querySelectorAll(".answer-text"));
 const progressText = document.querySelector("#progressText");
@@ -23,6 +21,7 @@ const restartAnimation = function () {
 };
 
 //using last week's array , modified to fit the code
+
 
 let questions = [
   {
@@ -113,8 +112,6 @@ let questions = [
   },
 ];
 
-//declaring the number of questions for the counter, also the points given for each so it can be easily implemented on the results page
-
 const MAX_QUESTIONS = 10;
 const SCORE_POINTS = 10;
 
@@ -125,23 +122,25 @@ startGame = () => {
   getNewQuestion();
 };
 
-const getNewQuestion = function () {
-  restartAnimation();
+getNewQuestion = () => {
+restartAnimation();
+  for (let i = 0; i < choiceBox.length; i++) {
+    choiceBox[i].classList.remove("choice-container-selected");
+  }
+  
   //the end redirects the page to the next one (results) after it reached the limit of questions, keeps track of points
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
-    return window.location.assign("./result.html");
+    return (window.location.href = "./result.html");
   }
-  //otherwise shows the number of the next question out of the total which is five in this case, also increments it with one every time
+
   questionCounter++;
   progressText.innerText = `Question ${questionCounter} / ${MAX_QUESTIONS}`;
 
-  //makes the questions appear in a random order on each refresh, uses the questions from the array
   const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[questionsIndex];
   question.innerText = currentQuestion.question;
 
-  //uses the array to generate the possible answers, each with an individual number after "choice" to separate them and check if they are correct
   choices.forEach((choice) => {
     const number = choice.dataset["number"];
     choice.innerText = currentQuestion["choice" + number];
@@ -151,26 +150,58 @@ const getNewQuestion = function () {
   acceptingAnswers = true;
 };
 
-//if you click on the right answer it applies correct otherwise incorrect, didn't specify in css
 choices.forEach((choice) => {
   choice.addEventListener("click", (e) => {
     if (!acceptingAnswers) return;
 
     acceptingAnswers = false;
-    const selectedChoice = e.target;
-    const selectedAnswer = selectedChoice.dataset["number"];
+    let selectedChoice = e.target;
+    let selectedAnswer = selectedChoice.dataset["number"];
 
     let classToApply =
-      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+      selectedAnswer === currentQuestion.answer ? "correct" : "incorrect";
 
     //adds 10 points if the answer is right
     if (classToApply === "correct") {
       incrementScore(SCORE_POINTS);
     }
+    /* choices.forEach((choice, clickedAnswer) => {
+  //starting the loop to inspect the answer buttons (choices is an array)
+  choice.addEventListener("click", () => {
+    //adding event listeners to each answer button
+    console.log(`You clicked on ${clickedAnswer + 1}`); //checking if the clicked register
+    let finalAnswer = clickedAnswer + 1; //declaring variable for storing the index of the clicked answer button
+    console.log("You have stored this answer: ", finalAnswer); //checking to see what index was stored
+    if (finalAnswer === currentQuestion.answer) {
+      //comparing our stored value from above, against the correct answer value
+      totalCorrect += 1; //if true, increments totalCorrect by 1
 
+      getNewQuestion(); //then calls the getNewQuestion function in order to move to the next one
+    } else {
+      //if false, increment wrong answers by 1
+      totalWrong += 1;
+      getNewQuestion(); //load new question
+    }
+    console.log("You have answered correct ", totalCorrect, " times");
+  });
+  // redirect(totalCorrect);
+});
+
+const redirect = (i, j) => {
+  //declaring the function to pass the dynamic parameters i and j, as long as static ones
+  const numberToPass = i; //dynamic
+  const totalWrong = j; //dynamic
+  const numberOfQuestions = MAX_QUESTIONS; //static
+  window.location.href =
+    "results.html?numberToPass=" +
+    numberToPass +
+    "&numberOfQuestions=" + //syntax for passing multiple parameters to results page
+    numberOfQuestions +
+    "&totalWrong=" +
+    totalWrong; 
+    */
     selectedChoice.parentElement.classList.add(classToApply);
 
-    //gives time to see if the answer is correct (might delete), then jumps to the next question using the function previously written (getNewQuestion())
     setTimeout(() => {
       selectedChoice.parentElement.classList.remove(classToApply);
       getNewQuestion();
@@ -180,20 +211,21 @@ choices.forEach((choice) => {
 
 newButton.addEventListener("click", () => {
   getNewQuestion();
-  timeSecond = 7;
+  timeSecond = 30;
+  newButton.classList.add("unclickable");
 });
 
 startGame();
 
 const timeH = document.querySelector("h3");
-let timeSecond = 7;
+let timeSecond = 30;
 timeH.innerHtml = timeSecond;
 
 const countDown = setInterval(() => {
   timeSecond--;
   timeH.innerHTML = timeSecond;
   if (timeSecond < 0) {
-    timeSecond = 7;
+    timeSecond = 30;
     timeH.innerHTML = timeSecond;
     getNewQuestion();
   }
@@ -202,5 +234,33 @@ const countDown = setInterval(() => {
 for (let i = 0; i < choiceBox.length; i++) {
   choiceBox[i].addEventListener("click", function () {
     choiceBox[i].classList.add("choice-container-selected");
+
+    console.log(choiceBox[i]);
+  });
+}
+
+choiceBox.forEach((box, index) => {
+  box.addEventListener("click", function () {
+    choiceBox.forEach((otherBoxes, prevIndex) => {
+      if (prevIndex !== index) {
+        otherBoxes.classList.remove("choice-container-selected");
+      }
+    });
+  });
+});
+
+// choiceBox.addEventListener("click", function () {
+//   if (choiceBox.click) {
+//     newButton.disabled = false;
+//     newButton.classList.remove("no-click");
+//   } else {
+//     newButton.disabled = true;
+//     newButton.classList.add("no-click");
+//   }
+// });
+for (let i = 0; i < choiceBox.length; i++) {
+  choiceBox[i].addEventListener("click", function () {
+    newButton.classList.remove("unclickable");
+
   });
 }

@@ -64,12 +64,14 @@
       </div>
     </div>
     <div class="rate-us">
-      <a href="./feedback.html"><button>RATE US</button></a>
+      <a href="./feedback.html"><button id="rateus">RATE US</button></a>
     </div>
     <script>
-      let resultInPercentage = 10; // result will be calculated by answered questions
-      let failedInPercentage = 100 - resultInPercentage;
 
+      console.log(localStorage.getItem("mostRecentScore"));
+      let ls = localStorage.getItem("mostRecentScore");
+      let resultInPercentage = 30; // result will be calculated by answered questions
+      let failedInPercentage = 100 - resultInPercentage;
       // defining correct Vars
       let correctPercentageText = document.getElementById(
         "correctPercentageText"
@@ -93,10 +95,8 @@
           correctPercentageText.innerHTML = counterCorrect + "%";
         }
 
-        console.log(wrongInPercentage);
         if (counterWrong < wrongInPercentage) {
           counterWrong += 1;
-          console.log(counterWrong);
           wrongPercentageText.innerHTML = counterWrong + "%";
         } else {
           wrongPercentageText.innerHTML = counterWrong + "%";
@@ -109,7 +109,6 @@
           clearInterval(countCorrect);
         }
 
-        console.log("correct counter in setInterval: " + counterCorrect);
       }, 25);
 
       //    displaying how many question correct/wronf out of 10
