@@ -120,10 +120,18 @@ svg {
   font-size: 20pt;
 }
 
+.flexitems {
+  align-items: center;
+  text-align: center;
+  align-self: center;
+  margin-right: 30px;
+}
+
 .answers {
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 10px;
+  text-align: center;
 }
 
 .choice-container {
@@ -169,7 +177,7 @@ p {
   color: rgb(232, 228, 233);
   background-color: transparent;
   font-family: Outfit;
-  margin-top: 10%;
+  margin-top: 5%;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -186,7 +194,7 @@ p {
   cursor: pointer;
   box-shadow: 1px 1px 10px cyan;
   border-color: transparent;
-  margin-left: 75%;
+  margin-left: auto;
   margin-right: auto;
   color: black;
   font-weight: 600;
@@ -220,4 +228,8 @@ p {
   background-color: gray !important;
   opacity: 0.2;
   pointer-events: none;
+}
+
+#purple-color {
+  color: #d20094;
 }

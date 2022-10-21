@@ -22,7 +22,6 @@ const restartAnimation = function () {
 
 //using last week's array , modified to fit the code
 
-
 let questions = [
   {
     question: "HTML is what type of language?",
@@ -115,19 +114,19 @@ let questions = [
 const MAX_QUESTIONS = 10;
 const SCORE_POINTS = 10;
 
-startGame = () => {
+const startGame = function () {
   questionCounter = 0;
   score = 0;
   availableQuestions = [...questions];
   getNewQuestion();
 };
 
-getNewQuestion = () => {
-restartAnimation();
+const getNewQuestion = function () {
+  restartAnimation();
   for (let i = 0; i < choiceBox.length; i++) {
     choiceBox[i].classList.remove("choice-container-selected");
   }
-  
+
   //the end redirects the page to the next one (results) after it reached the limit of questions, keeps track of points
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
@@ -135,7 +134,12 @@ restartAnimation();
   }
 
   questionCounter++;
-  progressText.innerText = `Question ${questionCounter} / ${MAX_QUESTIONS}`;
+  progressText.innerHTML =
+    `Question ` +
+    questionCounter +
+    `<span id="purple-color"> / ` +
+    MAX_QUESTIONS +
+    `</span>`;
 
   const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[questionsIndex];
@@ -202,16 +206,16 @@ const redirect = (i, j) => {
     */
     selectedChoice.parentElement.classList.add(classToApply);
 
-    setTimeout(() => {
-      selectedChoice.parentElement.classList.remove(classToApply);
-      getNewQuestion();
-    }, 60000);
+    // setTimeout(() => {
+    //   selectedChoice.parentElement.classList.remove(classToApply);
+    //   getNewQuestion();
+    // }, 30000);
   });
 });
 
 newButton.addEventListener("click", () => {
-  getNewQuestion();
   timeSecond = 30;
+  getNewQuestion();
   newButton.classList.add("unclickable");
 });
 
@@ -258,14 +262,15 @@ choiceBox.forEach((box, index) => {
 //     newButton.classList.add("no-click");
 //   }
 // });
-for (let i=0; i < choiceBox.length; i++) {
-  choiceBox[i].addEventListener('click', function() {
-  newButton.classList.remove("unclickable");
-  })}
+for (let i = 0; i < choiceBox.length; i++) {
+  choiceBox[i].addEventListener("click", function () {
+    newButton.classList.remove("unclickable");
+  });
+}
 
-  let totalCorrect = 0; //making this a global variable, so as not to have log issues later
-  let totalWrong = 0; //making this a global variable, so as not to have log issues later
-  choiceBox.forEach((choice, clickedAnswer) => {
+let totalCorrect = 0; //making this a global variable, so as not to have log issues later
+let totalWrong = 0; //making this a global variable, so as not to have log issues later
+choiceBox.forEach((choice, clickedAnswer) => {
   //starting the loop to inspect the answer buttons (choices is an array)
   choice.addEventListener("click", () => {
     //adding event listeners to each answer button
@@ -288,10 +293,10 @@ for (let i=0; i < choiceBox.length; i++) {
 let percentageOfCorrectAnswersToBePassedToResultPage = totalCorrect * 10;
 console.log(percentageOfCorrectAnswersToBePassedToResultPage);
 // window.location.href = "./results.html?numberToPass=" + numberToPass + "&numberOfQuestions=" + numberOfQuestions + "&total=" + percentageOfCorrectAnswersToBePassedToResultPage + "&totalWrong=" + totalWrong;
-const redirect = ()=> {
+const redirect = () => {
   const totalScore = totalCorrect;
   window.location.href = "./result.html?total=" + totalScore;
-}
+};
 // const redirect = (i, j) => {
 //   //declaring the function to pass the dynamic parameters i and j, as long as static ones
 //   const numberToPass = i; //dynamic
