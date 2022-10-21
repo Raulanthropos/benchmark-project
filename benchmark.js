@@ -12,7 +12,7 @@ let questionCounter = 0;
 let availableQuestions = [];
 
 // restarting Animation Timer
-const restartTimer = function () {
+const restartAnimation = function () {
   console.log("starting timer");
   let circle = document.querySelector("circle");
   circle.style.animationName = "none";
@@ -126,7 +126,7 @@ startGame = () => {
 };
 
 getNewQuestion = () => {
-  restartTimer();
+  restartAnimation();
   //the end redirects the page to the next one (results) after it reached the limit of questions, keeps track of points
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
