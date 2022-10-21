@@ -129,8 +129,7 @@ const getNewQuestion = function () {
 
   //the end redirects the page to the next one (results) after it reached the limit of questions, keeps track of points
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
-    localStorage.setItem("mostRecentScore", score);
-    return (window.location.href = "./result.html");
+    redirect();
   }
 
   questionCounter++;
@@ -230,22 +229,19 @@ choiceBox.forEach((choice, clickedAnswer) => {
     if (finalAnswer === currentQuestion.answer) {
       //comparing our stored value from above, against the correct answer value
       totalCorrect += 1; //if true, increments totalCorrect by 1
-
       // getNewQuestion(); //then calls the getNewQuestion function in order to move to the next one
     } else {
       //if false, increment wrong answers by 1
       totalWrong += 1;
+
       // getNewQuestion(); //load new question
     }
     console.log("You have answered correct ", totalCorrect, " times");
   });
-  // redirect(totalCorrect);
 });
 
-let percentageOfCorrectAnswersToBePassedToResultPage = totalCorrect * 10;
-console.log(percentageOfCorrectAnswersToBePassedToResultPage);
-// window.location.href = "./results.html?numberToPass=" + numberToPass + "&numberOfQuestions=" + numberOfQuestions + "&total=" + percentageOfCorrectAnswersToBePassedToResultPage + "&totalWrong=" + totalWrong;
 const redirect = () => {
-  const totalScore = totalCorrect;
+  const totalScore = totalCorrect * 10;
+  console.log(totalScore);
   window.location.href = "./result.html?total=" + totalScore;
 };

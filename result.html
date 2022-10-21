@@ -72,7 +72,8 @@
       console.log(total, typeof total);
       total = query.get("total");
       console.log(total, typeof total);
-      let resultInPercentage = 30; // result will be calculated by answered questions
+
+      let resultInPercentage = 60; // result will be calculated by answered questions
       let failedInPercentage = 100 - resultInPercentage;
       // defining correct Vars
       let correctPercentageText = document.getElementById(
@@ -110,7 +111,6 @@
         ) {
           clearInterval(countCorrect);
         }
-
       }, 25);
 
       //    displaying how many question correct/wronf out of 10
