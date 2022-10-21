@@ -241,6 +241,7 @@ choiceBox.forEach((choice, clickedAnswer) => {
 });
 
 const redirect = () => {
+  console.log("this is the one we need:" + totalCorrect);
   const totalScore = totalCorrect * 10;
   console.log(totalScore);
   window.location.href = "./result.html?total=" + totalScore;
